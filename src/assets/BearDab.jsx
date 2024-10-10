@@ -9,57 +9,53 @@ import { useGLTF } from "@react-three/drei";
 
 export default function BearDab(props) {
     const groupRef = useRef();
-    const { nodes, materials } = useGLTF("./models/dabPose.gltf");
+    const { nodes, materials } = useGLTF("./models/bearDab10-9-24.gltf");
 
     useFrame(() => {
-        groupRef.current.rotation.y += 0.01
-    })
+        groupRef.current.rotation.y += 0.01;
+    });
 
     return (
         <group {...props} dispose={null} ref={groupRef}>
-            <mesh
-                name="body001"
-                castShadow
-                receiveShadow
-                geometry={nodes.body001.geometry}
-                material={materials.Body}
-                morphTargetDictionary={nodes.body001.morphTargetDictionary}
-                morphTargetInfluences={nodes.body001.morphTargetInfluences}
-                position={[0, 1.306, 0]}
-            />
-            <mesh
-                name="Jacket001"
-                castShadow
-                receiveShadow
-                geometry={nodes.Jacket001.geometry}
-                material={materials.Jacket}
-                morphTargetDictionary={nodes.Jacket001.morphTargetDictionary}
-                morphTargetInfluences={nodes.Jacket001.morphTargetInfluences}
-                position={[0, 1.306, 0]}
-            />
-            <mesh
-                name="pants001"
-                castShadow
-                receiveShadow
-                geometry={nodes.pants001.geometry}
-                material={materials.pants}
-                morphTargetDictionary={nodes.pants001.morphTargetDictionary}
-                morphTargetInfluences={nodes.pants001.morphTargetInfluences}
-                position={[0, 1.306, 0]}
-            />
-            <mesh
-                name="Shirt001"
-                castShadow
-                receiveShadow
-                geometry={nodes.Shirt001.geometry}
-                material={materials.Shirt}
-                morphTargetDictionary={nodes.Shirt001.morphTargetDictionary}
-                morphTargetInfluences={nodes.Shirt001.morphTargetInfluences}
-                position={[0, 1.306, 0]}
-            />
-            <primitive object={nodes.Hips} />
+            <group position={[0, 1.67, 0]} scale={0.344}>
+                <mesh
+                    name="Cube002"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Cube002.geometry}
+                    material={materials["Material.004"]}
+                    morphTargetDictionary={nodes.Cube002.morphTargetDictionary}
+                    morphTargetInfluences={nodes.Cube002.morphTargetInfluences}
+                />
+                <mesh
+                    name="Cube002_1"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Cube002_1.geometry}
+                    material={materials.EverythingElse}
+                    morphTargetDictionary={
+                        nodes.Cube002_1.morphTargetDictionary
+                    }
+                    morphTargetInfluences={
+                        nodes.Cube002_1.morphTargetInfluences
+                    }
+                />
+                <mesh
+                    name="Cube002_2"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Cube002_2.geometry}
+                    material={materials.Material}
+                    morphTargetDictionary={
+                        nodes.Cube002_2.morphTargetDictionary
+                    }
+                    morphTargetInfluences={
+                        nodes.Cube002_2.morphTargetInfluences
+                    }
+                />
+            </group>
         </group>
     );
 }
 
-useGLTF.preload("./models/dabPose.gltf");
+useGLTF.preload("/bearDab10-9-24.gltf");

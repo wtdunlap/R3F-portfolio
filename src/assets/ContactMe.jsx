@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei";
+
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
@@ -10,8 +10,8 @@ const ContactMe = () => {
             <h1 className="text-2xl text-center m-10">
                 Contact <a className="text-pink-600">Bear</a>
             </h1>
-            <div className="flex flex-col h-4/5">
-                <p className=" mx-10">
+            <div className="flex flex-col h-4/5 items-center">
+            <p className=" mx-10 w-72 justify-center ">
                     This is where you can find me! I'm on{" "}
                     <a
                         className="text-pink-600"
@@ -32,7 +32,7 @@ const ContactMe = () => {
                 <Canvas className="">
                     <Suspense fallback={null}>
                         <BearDab scale={2.5} position={[0, -2.5, 0]} />
-                        <OrbitControls enableZoom={false} />
+                        
                     </Suspense>
                 </Canvas>
             </div>

@@ -9,148 +9,53 @@ import { useGLTF } from "@react-three/drei";
 
 export default function BearPoint(props) {
     const groupRef = useRef();
-    const { nodes, materials } = useGLTF("./models/bearPoint.gltf");
+    const { nodes, materials } = useGLTF("./models/bearPoint10-9-24.gltf");
 
     useFrame(() => {
-        groupRef.current.rotation.y -= 0.01
-    })
+        groupRef.current.rotation.y -= 0.01;
+    });
 
     return (
         <group {...props} dispose={null} ref={groupRef}>
-            <mesh
-                name="body002"
-                castShadow
-                receiveShadow
-                geometry={nodes.body002.geometry}
-                material={materials.Body}
-                morphTargetDictionary={nodes.body002.morphTargetDictionary}
-                morphTargetInfluences={nodes.body002.morphTargetInfluences}
-                position={[-0.006, 1.303, 0.001]}
-            />
-            <mesh
-                name="Jacket002"
-                castShadow
-                receiveShadow
-                geometry={nodes.Jacket002.geometry}
-                material={materials.Jacket}
-                morphTargetDictionary={nodes.Jacket002.morphTargetDictionary}
-                morphTargetInfluences={nodes.Jacket002.morphTargetInfluences}
-                position={[-0.006, 1.303, 0.001]}
-            />
-            <mesh
-                name="pants002"
-                castShadow
-                receiveShadow
-                geometry={nodes.pants002.geometry}
-                material={materials.pants}
-                morphTargetDictionary={nodes.pants002.morphTargetDictionary}
-                morphTargetInfluences={nodes.pants002.morphTargetInfluences}
-                position={[-0.006, 1.303, 0.001]}
-            />
-            <mesh
-                name="Shirt002"
-                castShadow
-                receiveShadow
-                geometry={nodes.Shirt002.geometry}
-                material={materials.Shirt}
-                morphTargetDictionary={nodes.Shirt002.morphTargetDictionary}
-                morphTargetInfluences={nodes.Shirt002.morphTargetInfluences}
-                position={[-0.006, 1.303, 0.001]}
-            />
-            <group position={[0, 0.711, 0]}>
-                <group position={[0, 0.177, 0]}>
-                    <group position={[0, 0.192, 0]}>
-                        <group
-                            position={[0, 0.221, 0]}
-                            rotation={[0, 0, 0.136]}
-                        >
-                            <group position={[0, 0.2, 0]}>
-                                <group
-                                    position={[0.044, 0.163, 0.001]}
-                                    rotation={[0, 0, -0.136]}
-                                    scale={0.344}
-                                >
-                                    <mesh
-                                        name="Cube007"
-                                        castShadow
-                                        receiveShadow
-                                        geometry={nodes.Cube007.geometry}
-                                        material={materials.Head}
-                                        morphTargetDictionary={
-                                            nodes.Cube007.morphTargetDictionary
-                                        }
-                                        morphTargetInfluences={
-                                            nodes.Cube007.morphTargetInfluences
-                                        }
-                                    />
-                                    <mesh
-                                        name="Cube007_1"
-                                        castShadow
-                                        receiveShadow
-                                        geometry={nodes.Cube007_1.geometry}
-                                        material={materials["Head.001"]}
-                                        morphTargetDictionary={
-                                            nodes.Cube007_1
-                                                .morphTargetDictionary
-                                        }
-                                        morphTargetInfluences={
-                                            nodes.Cube007_1
-                                                .morphTargetInfluences
-                                        }
-                                    />
-                                    <mesh
-                                        name="Cube007_2"
-                                        castShadow
-                                        receiveShadow
-                                        geometry={nodes.Cube007_2.geometry}
-                                        material={materials.Mouth}
-                                        morphTargetDictionary={
-                                            nodes.Cube007_2
-                                                .morphTargetDictionary
-                                        }
-                                        morphTargetInfluences={
-                                            nodes.Cube007_2
-                                                .morphTargetInfluences
-                                        }
-                                    />
-                                    <mesh
-                                        name="Cube007_3"
-                                        castShadow
-                                        receiveShadow
-                                        geometry={nodes.Cube007_3.geometry}
-                                        material={materials.Eye}
-                                        morphTargetDictionary={
-                                            nodes.Cube007_3
-                                                .morphTargetDictionary
-                                        }
-                                        morphTargetInfluences={
-                                            nodes.Cube007_3
-                                                .morphTargetInfluences
-                                        }
-                                    />
-                                    <mesh
-                                        name="Cube007_4"
-                                        castShadow
-                                        receiveShadow
-                                        geometry={nodes.Cube007_4.geometry}
-                                        material={materials["Material.002"]}
-                                        morphTargetDictionary={
-                                            nodes.Cube007_4
-                                                .morphTargetDictionary
-                                        }
-                                        morphTargetInfluences={
-                                            nodes.Cube007_4
-                                                .morphTargetInfluences
-                                        }
-                                    />
-                                </group>
-                            </group>
-                        </group>
-                    </group>
-                </group>
+            <group position={[0, 1.67, 0]} scale={0.344}>
+                <mesh
+                    name="Cube002"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Cube002.geometry}
+                    material={materials["Material.004"]}
+                    morphTargetDictionary={nodes.Cube002.morphTargetDictionary}
+                    morphTargetInfluences={nodes.Cube002.morphTargetInfluences}
+                />
+                <mesh
+                    name="Cube002_1"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Cube002_1.geometry}
+                    material={materials.EverythingElse}
+                    morphTargetDictionary={
+                        nodes.Cube002_1.morphTargetDictionary
+                    }
+                    morphTargetInfluences={
+                        nodes.Cube002_1.morphTargetInfluences
+                    }
+                />
+                <mesh
+                    name="Cube002_2"
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Cube002_2.geometry}
+                    material={materials.Material}
+                    morphTargetDictionary={
+                        nodes.Cube002_2.morphTargetDictionary
+                    }
+                    morphTargetInfluences={
+                        nodes.Cube002_2.morphTargetInfluences
+                    }
+                />
             </group>
         </group>
     );
 }
 
-useGLTF.preload("./models/bearPoint.gltf");
+useGLTF.preload("/bearPoint10-9-24.gltf");
