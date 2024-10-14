@@ -58,4 +58,4 @@ export default function BearDab(props) {
     );
 }
 
-useGLTF.preload("/bearDab10-9-24.gltf");
+useGLTF.preload("./models/bearDab10-9-24.gltf");

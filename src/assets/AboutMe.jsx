@@ -2,6 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
 import BearPoint from "./BearPoint.jsx";
+import PortalCard from "./PortalCard.jsx";
 
 const AboutMe = () => {
     return (
@@ -20,7 +21,9 @@ const AboutMe = () => {
                 </p>
                 <Canvas className="">
                     <Suspense fallback={null}>
-                        <BearPoint scale={2.5} position={[0, -2.5, 0]} />
+                        <PortalCard texture={"./textures/consoleBox.png"}>
+                            <BearPoint scale={2.5} position={[0, -2.5, 0]} />
+                        </PortalCard>
                     </Suspense>
                 </Canvas>
             </div>

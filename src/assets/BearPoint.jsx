@@ -58,4 +58,4 @@ export default function BearPoint(props) {
     );
 }
 
-useGLTF.preload("/bearPoint10-9-24.gltf");
+useGLTF.preload("./models/bearPoint10-9-24.gltf");
