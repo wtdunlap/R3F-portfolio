@@ -12,7 +12,7 @@ export default function BearPoint(props) {
     const { nodes, materials } = useGLTF("./models/bearPoint10-9-24.gltf");
 
     useFrame(() => {
-        groupRef.current.rotation.y -= 0.01;
+        groupRef.current.rotation.y += 0.01;
     });
 
     return (
