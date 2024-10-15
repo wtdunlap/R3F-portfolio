@@ -3,6 +3,8 @@ import { Suspense } from "react";
 
 import BearDab from "./BearDab.jsx";
 import PortalCard from "./PortalCard.jsx";
+import { Stats } from "@react-three/drei";
+import Loader from "./Loader.jsx";
 
 const AboutMe = () => {
     return (
@@ -16,15 +18,18 @@ const AboutMe = () => {
                     went to school for IT, studied for and passed a bunch of
                     classes, even did a coding bootcamp, maintained the A/B
                     honor roll almost the entire duration of my college
-                    experience. I am a quick learner. I work hard. What's not to
-                    love?
+                    experience. I am a quick learner and a hard worker.
                 </p>
                 <Canvas className="">
-                    <Suspense fallback={null}>
-                        <PortalCard texture={"./textures/consoleBox.png"}>
+                    <Suspense fallback={<Loader />}>
+                        <PortalCard
+                            texture={"./textures/consoleBox.png"}
+                            insetText={"See What I'm About!"}
+                        >
                             <BearDab scale={2.5} position={[0, -2.5, 0]} />
                         </PortalCard>
                     </Suspense>
+                    <Stats />
                 </Canvas>
             </div>
         </div>

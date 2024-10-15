@@ -20,8 +20,6 @@ export default function BearDab(props) {
             <group position={[0, 1.67, 0]} scale={0.344}>
                 <mesh
                     name="Cube002"
-                    castShadow
-                    receiveShadow
                     geometry={nodes.Cube002.geometry}
                     material={materials["Material.004"]}
                     morphTargetDictionary={nodes.Cube002.morphTargetDictionary}
@@ -29,8 +27,6 @@ export default function BearDab(props) {
                 />
                 <mesh
                     name="Cube002_1"
-                    castShadow
-                    receiveShadow
                     geometry={nodes.Cube002_1.geometry}
                     material={materials.EverythingElse}
                     morphTargetDictionary={
@@ -42,8 +38,6 @@ export default function BearDab(props) {
                 />
                 <mesh
                     name="Cube002_2"
-                    castShadow
-                    receiveShadow
                     geometry={nodes.Cube002_2.geometry}
                     material={materials.Material}
                     morphTargetDictionary={

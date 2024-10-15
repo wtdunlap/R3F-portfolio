@@ -1,11 +1,14 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense} from "react";
+import { Stats } from "@react-three/drei";
 
 import BearSurprise from "./BearSurprise.jsx";
 import PortalCard from "./PortalCard.jsx";
+import Loader from "./Loader.jsx";
 
 const Intro = () => {
+
     return (
         <div className="text-white h-screen justify-center content-center">
             <h1 className="text-2xl text-center m-10">
@@ -24,12 +27,18 @@ const Intro = () => {
                         video games
                     </a>
                 </p>
+
                 <Canvas className="">
-                    <Suspense fallback={null}>
-                        <PortalCard texture={"./textures/monitorBox.png"}>
+                    <Suspense fallback={<Loader />}>
+                        <PortalCard
+                            texture={"./textures/monitorBox.png"}
+                            insetText={"Join Me On My Journey!"}
+                        >
                             <BearSurprise scale={2.5} position={[0, -2.5, 0]} />
                         </PortalCard>
                     </Suspense>
+
+                    <Stats />
                 </Canvas>
             </div>
         </div>

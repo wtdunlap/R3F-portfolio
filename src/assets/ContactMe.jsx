@@ -3,6 +3,8 @@ import { Suspense } from "react";
 
 import BearPoint from "./BearPoint.jsx";
 import PortalCard from "./PortalCard.jsx";
+import { Stats } from "@react-three/drei";
+import Loader from "./Loader.jsx";
 
 const ContactMe = () => {
     return (
@@ -30,11 +32,12 @@ const ContactMe = () => {
                     request, along with college transcripts if needed
                 </p>
                 <Canvas className="">
-                    <Suspense fallback={null}>
-                        <PortalCard texture={"./textures/serverBox.png"}>
+                    <Suspense fallback={<Loader />}>
+                        <PortalCard texture={"./textures/serverBox.png"} insetText={"Work With Me!"}>
                             <BearPoint scale={2.5} position={[0, -2.5, 0]} />
                         </PortalCard>
                     </Suspense>
+                    <Stats />
                 </Canvas>
             </div>
         </div>

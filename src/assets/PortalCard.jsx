@@ -1,45 +1,46 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/no-unknown-property */
 import * as THREE from "three";
 import {
     useTexture,
     MeshPortalMaterial,
-    CameraControls,
     OrbitControls,
+    Text,
 } from "@react-three/drei";
 import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { EffectComposer, Scanline } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 
-export default function PortalCard({ children, texture, ...props }) {
+export default function PortalCard({ children, texture, insetText, ...props }) {
     const map = useTexture(texture);
     const sphereRef = useRef();
     const controlsRef = useRef();
     const planeRef = useRef();
+    const portalRef = useRef();
 
-    const [positions, setPositions] = useState([]);
+    const [portalPositions, setPortalPositions] = useState([]);
 
-    // Initialize the rectangle's vertex positions
     useEffect(() => {
-        const initialPositions = [
-            [-2.75, -3.5, 0], // Bottom left
-            [2.75, -3.5, 0], // Bottom right
-            [-2.75, 3.5, 0], // Top left
-            [2.75, 3.5, 0], // Top right
+        const initialPortalPositions = [
+            [-2.5, -3.5, 0], // Bottom left
+            [2.5, -3.5, 0], // Bottom right
+            [-2.5, 3.5, 0], // Top left
+            [2.5, 3.5, 0], // Top right
         ].flat();
 
-        setPositions(initialPositions);
+        setPortalPositions(initialPortalPositions);
     }, []);
 
-    useFrame((state, delta) => {
-        sphereRef.current.rotation.x += delta;
+    useFrame((state) => {
+        sphereRef.current.rotation.x += 0.01;
         sphereRef.current.rotation.y += 0.001;
 
         const time = state.clock.getElapsedTime();
-        const amplitude = 0.15; // Depth of the oscillation
+        const amplitude = 0.175; // Depth of the oscillation
         const speed = 0.75; // Speed of the oscillation
 
-        const newPositions = positions.map((value, index) => {
+        const newPortalPositions = portalPositions.map((value, index) => {
             // Raise and lower based on the index (Z coordinate)
             if (index % 3 === 2) {
                 // Z coordinate
@@ -50,11 +51,10 @@ export default function PortalCard({ children, texture, ...props }) {
             }
             return value;
         });
-
         planeRef.current.geometry.attributes.position.array.set(
-            new Float32Array(newPositions)
+            new Float32Array(newPortalPositions)
         );
-        planeRef.current.geometry.attributes.position.needsUpdate = true; // Update the geometry
+        planeRef.current.geometry.attributes.position.needsUpdate = true;
     });
 
     return (
@@ -64,17 +64,25 @@ export default function PortalCard({ children, texture, ...props }) {
                     blendFunction={BlendFunction.OVERLAY} // blend mode
                     density={2.3} // scanline density
                 />
+                <OrbitControls
+                    enablePan={false}
+                    enableRotate={false}
+                    enableZoom={false}
+                    ref={controlsRef}
+                />
                 <mesh ref={planeRef}>
+                    <Text
+                        fontSize={0.3}
+                        position={[0, -2.75, 1]}
+                        anchorY={"bottom"}
+                    >
+                        {insetText}
+                    </Text>
                     <planeGeometry args={[5.5, 7]} />
-                    <MeshPortalMaterial side={THREE.DoubleSide}>
-                        <OrbitControls
-                            ref={controlsRef}
-                            enableZoom={false}
-                            enableRotate={false}
-                            enablePan={false}
-                            maxPolarAngle={Math.PI / 2}
-                            minPolarAngle={Math.PI / 2}
-                        />
+                    <MeshPortalMaterial
+                        side={THREE.DoubleSide}
+                        ref={portalRef}
+                    >
                         <ambientLight intensity={0.5} />
                         {children}
                         <mesh ref={sphereRef}>
